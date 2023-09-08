@@ -1,0 +1,85 @@
+
+Gurobi 10.0.2 (linux64) logging started Thu Sep  7 10:02:47 2023
+
+Set parameter LogFile to value "../surrogate_problem/log/surrogate2_7.log"
+Set parameter Threads to value 30
+Gurobi Optimizer version 10.0.2 build v10.0.2rc0 (linux64)
+
+CPU model: Intel(R) Xeon(R) Platinum 8280 CPU @ 2.70GHz, instruction set [SSE2|AVX|AVX2|AVX512]
+Thread count: 112 physical cores, 112 logical processors, using up to 30 threads
+
+Optimize a model with 503 rows, 801 columns and 52641 nonzeros
+Model fingerprint: 0x3e44e4e3
+Variable types: 321 continuous, 480 integer (480 binary)
+Coefficient statistics:
+  Matrix range     [6e-08, 1e+05]
+  Objective range  [5e-01, 2e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [2e-02, 1e+05]
+Warning: Model contains large matrix coefficient range
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Found heuristic solution: objective 62745.522001
+Presolve removed 280 rows and 280 columns
+Presolve time: 0.03s
+Presolved: 223 rows, 521 columns, 20898 nonzeros
+Variable types: 134 continuous, 387 integer (387 binary)
+
+Root relaxation: objective 5.505816e+04, 91 iterations, 0.00 seconds (0.00 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 55058.1646    0    2 62745.5220 55058.1646  12.3%     -    0s
+H    0     0                    55058.164989 55058.1646  0.00%     -    0s
+     0     0 55058.1646    0    2 55058.1650 55058.1646  0.00%     -    0s
+
+Explored 1 nodes (91 simplex iterations) in 0.07 seconds (0.04 work units)
+Thread count was 30 (of 112 available processors)
+
+Solution count 2: 55058.2 62745.5 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 5.505816498871e+04, best bound 5.505816498871e+04, gap 0.0000%
+
+Gurobi 10.0.2 (linux64) logging started Fri Sep  8 15:07:15 2023
+
+Set parameter LogFile to value "../surrogate_problem/log/surrogate2_7.log"
+Gurobi Optimizer version 10.0.2 build v10.0.2rc0 (linux64)
+
+CPU model: Intel(R) Xeon(R) Platinum 8280 CPU @ 2.70GHz, instruction set [SSE2|AVX|AVX2|AVX512]
+Thread count: 112 physical cores, 112 logical processors, using up to 30 threads
+
+Optimize a model with 503 rows, 801 columns and 52641 nonzeros
+Model fingerprint: 0x3e44e4e3
+Variable types: 321 continuous, 480 integer (480 binary)
+Coefficient statistics:
+  Matrix range     [6e-08, 1e+05]
+  Objective range  [5e-01, 2e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [2e-02, 1e+05]
+Warning: Model contains large matrix coefficient range
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Found heuristic solution: objective 62745.522001
+Presolve removed 280 rows and 280 columns
+Presolve time: 0.04s
+Presolved: 223 rows, 521 columns, 20898 nonzeros
+Variable types: 134 continuous, 387 integer (387 binary)
+
+Root relaxation: objective 5.505816e+04, 91 iterations, 0.00 seconds (0.00 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 55058.1646    0    2 62745.5220 55058.1646  12.3%     -    0s
+H    0     0                    55058.164989 55058.1646  0.00%     -    0s
+     0     0 55058.1646    0    2 55058.1650 55058.1646  0.00%     -    0s
+
+Explored 1 nodes (91 simplex iterations) in 0.09 seconds (0.04 work units)
+Thread count was 30 (of 112 available processors)
+
+Solution count 2: 55058.2 62745.5 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 5.505816498871e+04, best bound 5.505816498871e+04, gap 0.0000%

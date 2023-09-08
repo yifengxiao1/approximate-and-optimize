@@ -1,0 +1,79 @@
+
+Gurobi 10.0.2 (linux64) logging started Thu Sep  7 10:02:50 2023
+
+Set parameter LogFile to value "../surrogate_problem/log/surrogate2_21.log"
+Set parameter Threads to value 30
+Gurobi Optimizer version 10.0.2 build v10.0.2rc0 (linux64)
+
+CPU model: Intel(R) Xeon(R) Platinum 8280 CPU @ 2.70GHz, instruction set [SSE2|AVX|AVX2|AVX512]
+Thread count: 112 physical cores, 112 logical processors, using up to 30 threads
+
+Optimize a model with 505 rows, 807 columns and 53607 nonzeros
+Model fingerprint: 0x163491a3
+Variable types: 321 continuous, 486 integer (486 binary)
+Coefficient statistics:
+  Matrix range     [1e-05, 1e+05]
+  Objective range  [6e-01, 5e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-02, 1e+05]
+Found heuristic solution: objective 51991.411015
+Presolve removed 298 rows and 298 columns
+Presolve time: 0.03s
+Presolved: 207 rows, 509 columns, 19275 nonzeros
+Variable types: 122 continuous, 387 integer (387 binary)
+
+Root relaxation: objective 4.637959e+04, 87 iterations, 0.00 seconds (0.00 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 46379.5897    0    2 51991.4110 46379.5897  10.8%     -    0s
+H    0     0                    46379.591140 46379.5897  0.00%     -    0s
+     0     0 46379.5897    0    2 46379.5911 46379.5897  0.00%     -    0s
+
+Explored 1 nodes (87 simplex iterations) in 0.06 seconds (0.04 work units)
+Thread count was 30 (of 112 available processors)
+
+Solution count 2: 46379.6 51991.4 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 4.637959114001e+04, best bound 4.637959114001e+04, gap 0.0000%
+
+Gurobi 10.0.2 (linux64) logging started Fri Sep  8 15:14:54 2023
+
+Set parameter LogFile to value "../surrogate_problem/log/surrogate2_21.log"
+Gurobi Optimizer version 10.0.2 build v10.0.2rc0 (linux64)
+
+CPU model: Intel(R) Xeon(R) Platinum 8280 CPU @ 2.70GHz, instruction set [SSE2|AVX|AVX2|AVX512]
+Thread count: 112 physical cores, 112 logical processors, using up to 30 threads
+
+Optimize a model with 505 rows, 807 columns and 53607 nonzeros
+Model fingerprint: 0x163491a3
+Variable types: 321 continuous, 486 integer (486 binary)
+Coefficient statistics:
+  Matrix range     [1e-05, 1e+05]
+  Objective range  [6e-01, 5e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-02, 1e+05]
+Found heuristic solution: objective 51991.411015
+Presolve removed 298 rows and 298 columns
+Presolve time: 0.03s
+Presolved: 207 rows, 509 columns, 19275 nonzeros
+Variable types: 122 continuous, 387 integer (387 binary)
+
+Root relaxation: objective 4.637959e+04, 87 iterations, 0.00 seconds (0.00 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 46379.5897    0    2 51991.4110 46379.5897  10.8%     -    0s
+H    0     0                    46379.591140 46379.5897  0.00%     -    0s
+     0     0 46379.5897    0    2 46379.5911 46379.5897  0.00%     -    0s
+
+Explored 1 nodes (87 simplex iterations) in 0.08 seconds (0.04 work units)
+Thread count was 30 (of 112 available processors)
+
+Solution count 2: 46379.6 51991.4 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 4.637959114001e+04, best bound 4.637959114001e+04, gap 0.0000%

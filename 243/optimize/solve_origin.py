@@ -4,10 +4,11 @@ from gurobipy import GRB
 
 def solve_origin(problem, threads):
     model = gp.read(f'../mps_data/problem2_{problem}.mps.mps')
-    model.setParam(GRB.Param.LogFile, f'../reopt_p2/problem2_{problem}.log')
-    model.setParam('TimeLimit', 600)
+    # model.setParam(GRB.Param.LogFile, f'../reopt_p2/problem2_{problem}.log')
+    model.setParam('TimeLimit', 300)
     model.setParam('Threads', threads)
     model.optimize()
+    model.write(f'{problem}.sol')
     return
 
 if __name__ == '__main__':

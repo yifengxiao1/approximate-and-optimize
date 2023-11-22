@@ -22,7 +22,7 @@ class Linear(nn.Module):
 
 def get_problem_and_net(problem_number):
     model = gp.read(f'../mps_data/problem2_{problem_number}.mps.mps')
-    net = torch.load(f'../model/model2_{problem_number}.pt', map_location=torch.device('cpu'))
+    net = torch.load(f'../model_modified/model2_{problem_number}.pt', map_location=torch.device('cpu'))
     return model, net
 
 def generate_surrogate_problem(model, net, M_plus=1e5, M_minus=1e5):
@@ -95,11 +95,11 @@ def generate_surrogate_problem(model, net, M_plus=1e5, M_minus=1e5):
     return model
 
 def solve_surrogate(problem, threads):
-    model = gp.read(f'../surrogate_problem/surrogate2_{problem}.mps')
-    model.setParam(GRB.Param.LogFile, f'../surrogate_problem/log/surrogate2_{problem}.log')
+    model = gp.read(f'../surrogate_problem_modified/surrogate2_{problem}.mps')
+    model.setParam(GRB.Param.LogFile, f'../surrogate_problem_modified/log/surrogate2_{problem}.log')
     model.setParam('Threads', threads)
     model.optimize()
-    model.write(f'../surrogate_problem/sol/surrogate2_{problem}.sol')
+    model.write(f'../surrogate_problem_modified/sol/surrogate2_{problem}.sol')
     return
 
 
@@ -121,7 +121,7 @@ def solve_sub_problem(dic):
         E[ekey]= sub_model.addVar(vtype=GRB.BINARY,obj=e_var[ekey], name = ekey)
 
     for yvar in y_var:
-        Y[yvar] = sub_model.addVar(vtype=GRB.BINARY, name = yvar)
+        Y[yvar] = sub_model.addVar(vtype=GRB.BINARY,obj=0, name = yvar)
 
 
     temp = LinExpr()
@@ -154,9 +154,9 @@ def solve_sub_problem(dic):
 
 
 def partition(problem, threads):
-    model_sur = gp.read(f'../surrogate_problem/surrogate2_{problem}.mps')
+    model_sur = gp.read(f'../surrogate_problem_modified/surrogate2_{problem}.mps')
     model_sur.setParam('Threads', threads)
-    model_sur.setParam(GRB.Param.LogFile, f'../surrogate_problem/log/surrogate2_{problem}.log')
+    # model_sur.setParam(GRB.Param.LogFile, f'../surrogate_problem_modified/log/surrogate2_{problem}.log')
     model_sur.optimize()
     first_stage_obj = 0
 
@@ -220,9 +220,15 @@ def partition(problem, threads):
 
 
 if __name__=='__main__':
+    for i in range(10):
+        m, n = get_problem_and_net(i)
+        sur = generate_surrogate_problem(m, n)
+        sur.write(f'../surrogate_problem_modified/surrogate2_{i}.mps')
+
+
     threads = 30
     results = {}
-    for l in range(50):
+    for l in range(10):
         res_list = []
         T1 = time.perf_counter()             # Including time of reading model
         FSO, SSO_sur, sub_problem = partition(l,30)
@@ -245,13 +251,16 @@ if __name__=='__main__':
         print(f'problem{l} done-------------------------------------------')
 
     print(results)
-    f_save = open('results.pkl', 'wb')
+    f_save = open('results_modified.pkl', 'wb')
     pkl.dump(results, f_save)
     f_save.close()
 
 
-    # sub_problem = partition(0,30)
-    # print(sub_problem)
+
+
+
+
+
         
 
         

@@ -62,12 +62,13 @@ def generate_problem_under_first_stage_solution(problem_number, x_index):
                 m.getVarByName(f'x({request}_{path})').setAttr('lb', 1)
             else:
                 m.getVarByName(f'x({request}_{path})').setAttr('ub', 0)
+    m.update()
     return m
 
 def get_x_and_obj(problem_number,batch_size):
     i = problem_number
     data = []
-    time_limit = 600
+    time_limit = 300
     j=0
     while j < batch_size:
         sample = {}
@@ -76,16 +77,24 @@ def get_x_and_obj(problem_number,batch_size):
         m.setParam('Timelimit', time_limit)
         m.setParam('OutputFlag', 0)
         m.optimize()
-        if m.status == GRB.Status.OPTIMAL:
-            sample['x'] = x
-            sample['x_index'] = x_index
-            sample['obj'] = m.objVal
-            data.append(sample)
-            j+=1
+        FSO = 0
+        for var in m.getVars():
+            if 'x' in str(var):
+                FSO += var.getAttr('x')
+        # if m.MIPGap != GRB.INFINITY:
+        sample['x'] = x
+        sample['x_index'] = x_index
+        obj = m.objVal - FSO
+        for var in m.getVars():
+            if 'x' in str(var):
+                obj -= var.getAttr('x') * var.getAttr('Obj')
+        sample['obj'] = obj
+        data.append(sample)
+        j+=1
     return data
 
-def parallel(process=1):
-    datasize = 5000  # 5000 samples for every problem
+def parallel(size, process=1):
+    datasize = size  
     for j in range(50):
         pool = multiprocessing.Pool(processes=process)
         results = []
@@ -97,7 +106,7 @@ def parallel(process=1):
         data = []
         for res in results:
             data += res.get()
-        f_save = open(f'../training_data/problem2_{j}.pkl', 'wb')
+        f_save = open(f'../training_data_modified/problem2_{j}.pkl', 'wb')
         pkl.dump(data, f_save)
         f_save.close()
         print(f'Problem {j} done')
@@ -105,7 +114,7 @@ def parallel(process=1):
 
             
 if __name__ == '__main__':
-    parallel(50)
+    parallel(size=50000, process=50)
 
 
         
